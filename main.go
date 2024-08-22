@@ -6,6 +6,7 @@ import (
 	"strconv"
 	"time"
 
+	"codinghavoc.com/go-back-end/db_conn"
 	"codinghavoc.com/go-back-end/models"
 	"github.com/gin-gonic/gin"
 	cors "github.com/rs/cors/wrapper/gin"
@@ -30,6 +31,9 @@ func main() {
 	server.GET("/test", test)
 
 	server.Run()
+
+	db := db_conn.Connect()
+	defer db.Close()
 }
 
 func test(context *gin.Context) {
