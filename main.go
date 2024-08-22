@@ -29,7 +29,7 @@ func main() {
 	// server.GET("/")
 	server.GET("/test", test)
 
-	server.Run(":8181")
+	server.Run()
 }
 
 func test(context *gin.Context) {
