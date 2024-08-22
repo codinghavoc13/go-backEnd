@@ -2,7 +2,6 @@ package db_conn
 
 import (
 	"database/sql"
-	"fmt"
 	"os"
 
 	_ "github.com/lib/pq"
@@ -30,11 +29,13 @@ func Connect() *sql.DB {
 	// fmt.Println("ENV:", os.Getenv("ENV"))
 	// fmt.Println("DB_HOST:", os.Getenv("DB_HOST"))
 	// if os.Getenv("ENV") == "dev" {
-	connStr := fmt.Sprintf("host=%s port=%d user=%s "+
-		"password=%s dbname=%s sslmode=disable",
-		os.Getenv("DB_HOST"), port, os.Getenv("DB_USER"), os.Getenv("DB_PW"), dbname)
+	// connStr := fmt.Sprintf("host=%s port=%d user=%s "+
+	// 	"password=%s dbname=%s sslmode=disable",
+	// 	os.Getenv("DB_HOST"), port, os.Getenv("DB_USER"), os.Getenv("DB_PW"), dbname)
 
-	db, err = sql.Open("postgres", connStr)
+	// db, err = sql.Open("postgres", connStr)
+
+	db, err = sql.Open("postgres", os.Getenv("DATABASE_URL"))
 	if err != nil {
 		panic(err)
 	}
