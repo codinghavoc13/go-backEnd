@@ -33,14 +33,14 @@ func main() {
 }
 
 func test(context *gin.Context) {
-	context.JSON(http.StatusBadRequest, gin.H{"message": "Test works"})
+	context.JSON(http.StatusOK, gin.H{"message": "Test works"})
 }
 
 func createPost(context *gin.Context) {
 	var postInfo models.PostInfoDTO
 	err := context.ShouldBindJSON(&postInfo)
 	if err != nil {
-		context.JSON(http.StatusOK, gin.H{"message": "Missing fields, try again"})
+		context.JSON(http.StatusBadRequest, gin.H{"message": "Missing fields, try again"})
 		return
 	}
 	postInfo.NumberOfResponses = 0
