@@ -26,7 +26,7 @@ func main() {
 	server.GET("/posts/postDetail/:id", getPostById)
 	server.POST("/posts/newPost", createPost)
 	server.GET("/rooms/all", getRoomList)
-	server.GET("/")
+	// server.GET("/")
 	server.GET("/test", test)
 
 	server.Run(":8181")
