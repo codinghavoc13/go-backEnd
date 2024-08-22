@@ -40,7 +40,7 @@ func createPost(context *gin.Context) {
 	var postInfo models.PostInfoDTO
 	err := context.ShouldBindJSON(&postInfo)
 	if err != nil {
-		context.JSON(http.StatusBadRequest, gin.H{"message": "Missing fields, try again"})
+		context.JSON(http.StatusOK, gin.H{"message": "Missing fields, try again"})
 		return
 	}
 	postInfo.NumberOfResponses = 0
